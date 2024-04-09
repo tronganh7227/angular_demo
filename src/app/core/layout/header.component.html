@@ -1,11 +1,11 @@
 <nav class="navbar navbar-light">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">conduit</a>
+    <a class="navbar-brand" routerLink="/">Trọng Anh DEMO</a>
 
-    <!-- Show this for logged out users -->
+    <!-- show nếu chưa đăng nhập -->
     <ul *ifAuthenticated="false" class="nav navbar-nav pull-xs-right">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/"> Home </a>
+        <a class="nav-link" routerLink="/"> Trang chủ </a>
       </li>
 
       <li class="nav-item">
@@ -21,7 +21,7 @@
       </li>
     </ul>
 
-    <!-- Show this for logged in users -->
+    <!-- show những thông tin khi đăng nhập thành công -->
     <ul *ifAuthenticated="true" class="nav navbar-nav pull-xs-right">
       <li class="nav-item">
         <a
@@ -30,22 +30,28 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          Home
+          Trang chủ
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/editor" routerLinkActive="active">
-          <i class="ion-compose"></i>&nbsp;New Article
+          <i class="ion-compose"></i>&nbsp;Bài viết mới
         </a>
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" routerLink="/giadinh" routerLinkActive="active">
+          <i class="ion-compose"></i>&nbsp;Bài viết gia đình
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" routerLink="/settings" routerLinkActive="active">
-          <i class="ion-gear-a"></i>&nbsp;Settings
+          <i class="ion-gear-a"></i>&nbsp;Chỉnh sửa thông tin
         </a>
       </li>
 
+      <!-- hiển thị thông tin user đăng nhập -->
       @if (currentUser$ | async; as currentUser) {
         <li class="nav-item">
           <a

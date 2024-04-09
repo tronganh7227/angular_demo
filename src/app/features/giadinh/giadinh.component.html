@@ -1,4 +1,4 @@
-<div class="settings-page">
+<div class="giadinh-page">
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
@@ -6,7 +6,7 @@
 
         <app-list-errors [errors]="errors" />
 
-        <form [formGroup]="settingsForm" (ngSubmit)="submitForm()">
+        <form [formGroup]="giadinhForm" (ngSubmit)="submitForm()">
           <fieldset [disabled]="isSubmitting">
             <fieldset class="form-group">
               <input
@@ -55,7 +55,7 @@
             </fieldset>
 
             <button class="btn btn-lg btn-primary pull-xs-right" type="submit">
-              Update Settings
+              Update giadinh
             </button>
           </fieldset>
         </form>

@@ -12,7 +12,7 @@ import { ListErrorsComponent } from "../../shared/components/list-errors.compone
 import { Errors } from "../../core/models/errors.model";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
-interface SettingsForm {
+interface giadinhForm {
   image: FormControl<string>;
   username: FormControl<string>;
   bio: FormControl<string>;
@@ -21,14 +21,14 @@ interface SettingsForm {
 }
 
 @Component({
-  selector: "app-settings-page",
-  templateUrl: "./settings.component.html",
+  selector: "app-giadinh-page",
+  templateUrl: "./giadinh.component.html",
   imports: [ListErrorsComponent, ReactiveFormsModule],
   standalone: true,
 })
-export default class SettingsComponent implements OnInit {
+export default class giadinhComponent implements OnInit {
   user!: User;
-  settingsForm = new FormGroup<SettingsForm>({
+  giadinhForm = new FormGroup<giadinhForm>({
     image: new FormControl("", { nonNullable: true }),
     username: new FormControl("", { nonNullable: true }),
     bio: new FormControl("", { nonNullable: true }),
@@ -38,37 +38,38 @@ export default class SettingsComponent implements OnInit {
       nonNullable: true,
     }),
   });
-  errors: Errors | null = null;
-  isSubmitting = false;
-  destroyRef = inject(DestroyRef);
 
-  constructor(
-    private readonly router: Router,
-    private readonly userService: UserService,
-  ) {}
+  // errors: Errors | null = null;
+  // isSubmitting = false;
+  // destroyRef = inject(DestroyRef);
 
-  ngOnInit(): void {
-    this.settingsForm.patchValue(
-      this.userService.getCurrentUser() as Partial<User>,
-    );
-  }
+  // constructor(
+  //   private readonly router: Router,
+  //   private readonly userService: UserService,
+  // ) {}
 
-  logout(): void {
-    this.userService.logout();
-  }
+  // ngOnInit(): void {
+  //   this.giadinhForm.patchValue(
+  //     this.userService.getCurrentUser() as Partial<User>,
+  //   );
+  // }
 
-  submitForm() {
-    this.isSubmitting = true;
-    this.userService
-      .update(this.settingsForm.value)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: ({ user }) =>
-          void this.router.navigate(["/profile/", user.username]),
-        error: (err) => {
-          this.errors = err;
-          this.isSubmitting = false;
-        },
-      });
-  }
+  // logout(): void {
+  //   this.userService.logout();
+  // }
+
+  // submitForm() {
+  //   this.isSubmitting = true;
+  //   this.userService
+  //     .update(this.giadinhForm.value)
+  //     .pipe(takeUntilDestroyed(this.destroyRef))
+  //     .subscribe({
+  //       next: ({ user }) =>
+  //         void this.router.navigate(["/profile/", user.username]),
+  //       error: (err) => {
+  //         this.errors = err;
+  //         this.isSubmitting = false;
+  //       },
+  //     });
+  // }
 }
