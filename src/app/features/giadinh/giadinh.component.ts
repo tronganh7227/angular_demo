@@ -39,37 +39,37 @@ export default class giadinhComponent implements OnInit {
     }),
   });
 
-  // errors: Errors | null = null;
-  // isSubmitting = false;
-  // destroyRef = inject(DestroyRef);
+  errors: Errors | null = null;
+  isSubmitting = false;
+  destroyRef = inject(DestroyRef);
 
-  // constructor(
-  //   private readonly router: Router,
-  //   private readonly userService: UserService,
-  // ) {}
+  constructor(
+    private readonly router: Router,
+    private readonly userService: UserService,
+  ) {}
 
-  // ngOnInit(): void {
-  //   this.giadinhForm.patchValue(
-  //     this.userService.getCurrentUser() as Partial<User>,
-  //   );
-  // }
+  ngOnInit(): void {
+    this.giadinhForm.patchValue(
+      this.userService.getCurrentUser() as Partial<User>,
+    );
+  }
 
-  // logout(): void {
-  //   this.userService.logout();
-  // }
+  logout(): void {
+    this.userService.logout();
+  }
 
-  // submitForm() {
-  //   this.isSubmitting = true;
-  //   this.userService
-  //     .update(this.giadinhForm.value)
-  //     .pipe(takeUntilDestroyed(this.destroyRef))
-  //     .subscribe({
-  //       next: ({ user }) =>
-  //         void this.router.navigate(["/profile/", user.username]),
-  //       error: (err) => {
-  //         this.errors = err;
-  //         this.isSubmitting = false;
-  //       },
-  //     });
-  // }
+  submitForm() {
+    this.isSubmitting = true;
+    this.userService
+      .update(this.giadinhForm.value)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: ({ user }) =>
+          void this.router.navigate(["/profile/", user.username]),
+        error: (err) => {
+          this.errors = err;
+          this.isSubmitting = false;
+        },
+      });
+  }
 }
