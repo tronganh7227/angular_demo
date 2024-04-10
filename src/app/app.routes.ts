@@ -31,7 +31,6 @@ export const routes: Routes = [
   {
     path: "giadinh",
     loadComponent: () => import("./features/giadinh/giadinh.component"),
-    canActivate: [() => inject(UserService).isAuthenticated],
   },
   {
     path: "profile",
