@@ -1,4 +1,11 @@
-import { Component, DestroyRef, inject, OnInit } from "@angular/core";
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  Input,
+  Output,
+} from "@angular/core";
 import {
   FormControl,
   FormGroup,
@@ -58,22 +65,20 @@ export default class giadinhComponent implements OnInit {
     private readonly productService: ProductService,
   ) {}
   // gán dữ liệu cho compoment con
+  @Output() input_data!: string;
+  products!: Product[];
 
-  product_data!: Product[];
   ngOnInit(): void {
     this.giadinhForm.patchValue(
       this.userService.getCurrentUser() as Partial<User>,
     );
-    // gán dữ liệu cho danh sách con
-    this.productService.getProductsMini().then((data) => {
-      this.product_data = data;
-    });
-  }
 
+    // gán dữ liệu cho danh sách con
+    this.input_data = "Truyền dữ liệu từ component cha sang";
+  }
   logout(): void {
     this.userService.logout();
   }
-
   submitForm() {
     this.isSubmitting = true;
     this.userService

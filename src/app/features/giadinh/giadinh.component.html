@@ -25,7 +25,6 @@
                 formControlName="username"
               />
             </fieldset>
-
             <fieldset class="form-group">
               <textarea
                 class="form-control form-control-lg"
@@ -35,7 +34,6 @@
               >
               </textarea>
             </fieldset>
-
             <fieldset class="form-group">
               <input
                 class="form-control form-control-lg"
@@ -53,22 +51,28 @@
                 formControlName="password"
               />
             </fieldset>
-
-            <button class="btn btn-lg btn-primary pull-xs-right" type="submit">
-              Cập nhật thông tin gia đình
-            </button>
           </fieldset>
         </form>
 
         <!-- Line break for logout button -->
         <hr />
-
+        <!-- 
         <button class="btn btn-outline-danger" (click)="logout()">
           Đăng xuất ứng dụng.
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
 </div>
-
-<div class="md-20"><app-danhsach /></div>
+<div
+  class="container d-flex justify-content-center align-items-center position-absolute top-30 start-30 w-100"
+  style="height: 30vh"
+>
+  <app-danhsach [input_data]="input_data"></app-danhsach>
+</div>
+<button
+  class="col-md-6 offset-md-3 col-xs-12 btn btn-lg btn-primary pull-xs-center"
+  type="submit"
+>
+  Cập nhật thông tin gia đình
+</button>
