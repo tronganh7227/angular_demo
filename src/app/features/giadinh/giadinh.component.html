@@ -12,7 +12,7 @@
               <input
                 class="form-control"
                 type="text"
-                placeholder="URL of profile picture"
+                placeholder=""
                 formControlName="image"
               />
             </fieldset>
@@ -21,7 +21,7 @@
               <input
                 class="form-control form-control-lg"
                 type="text"
-                placeholder="Username"
+                placeholder=""
                 formControlName="username"
               />
             </fieldset>
@@ -29,7 +29,7 @@
               <textarea
                 class="form-control form-control-lg"
                 rows="8"
-                placeholder="Short bio about you"
+                placeholder=""
                 formControlName="bio"
               >
               </textarea>
@@ -38,8 +38,8 @@
               <input
                 class="form-control form-control-lg"
                 type="email"
-                placeholder="Email"
-                formControlName="email"
+                placeholder=""
+                formControlName=""
               />
             </fieldset>
 
@@ -47,32 +47,23 @@
               <input
                 class="form-control form-control-lg"
                 type="password"
-                placeholder="New Password"
+                placeholder=""
                 formControlName="password"
               />
             </fieldset>
           </fieldset>
         </form>
-
-        <!-- Line break for logout button -->
         <hr />
-        <!-- 
-        <button class="btn btn-outline-danger" (click)="logout()">
-          Đăng xuất ứng dụng.
-        </button> -->
       </div>
     </div>
   </div>
 </div>
-<div
-  class="container d-flex justify-content-center align-items-center position-absolute top-30 start-30 w-100"
-  style="height: 30vh"
->
-  <app-danhsach [input_data]="input_data"></app-danhsach>
+<div class="container d-flex justify-content-center align-items-center">
+  <app-danhsach
+    [input_data_con]="input_data_con"
+    [product_cha]="product_cha"
+  ></app-danhsach>
 </div>
-<button
-  class="col-md-6 offset-md-3 col-xs-12 btn btn-lg btn-primary pull-xs-center"
-  type="submit"
->
+<button class="btn btn-lg btn-primary align-items-center" type="submit">
   Cập nhật thông tin gia đình
 </button>

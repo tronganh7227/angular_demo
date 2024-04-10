@@ -65,16 +65,18 @@ export default class giadinhComponent implements OnInit {
     private readonly productService: ProductService,
   ) {}
   // gán dữ liệu cho compoment con
-  @Output() input_data!: string;
-  products!: Product[];
-
+  @Output() input_data_con!: string;
+  @Output() product_cha!: Product[];
   ngOnInit(): void {
     this.giadinhForm.patchValue(
       this.userService.getCurrentUser() as Partial<User>,
     );
+    this.productService.getProductsMini().then((data) => {
+      this.product_cha = data;
+    });
 
     // gán dữ liệu cho danh sách con
-    this.input_data = "Truyền dữ liệu từ component cha sang";
+    this.input_data_con = "Truyền dữ liệu từ component cha sang";
   }
   logout(): void {
     this.userService.logout();

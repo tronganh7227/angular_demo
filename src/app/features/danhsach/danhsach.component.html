@@ -1,22 +1,20 @@
 <div class="card">
-  <div class="flex justify-content-center mb-3">
-    <!-- <p-selectButton [options]="sizes" [(ngModel)]="selectedSize" [multiple]="false" optionLabel="name" optionValue="class"></p-selectButton>  -->
-  </div>
-  <div class="flex justify-content-center mb-3">
-    {{ input_data }}
-    <!-- <p-selectButton [options]="sizes" [(ngModel)]="selectedSize" [multiple]="false" optionLabel="name" optionValue="class"></p-selectButton>  -->
-  </div>
   <p-table
-    [value]="products"
+    [value]="product_cha"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
     [tableStyle]="{ 'min-width': '50rem' }"
-    [styleClass]="selectedSize.class"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    paginatorLocale="fa-IR"
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Quantity</th>
+        <th style="width: 25%">Name</th>
+        <th style="width: 25%">Country</th>
+        <th style="width: 25%">Company</th>
+        <th style="width: 25%">Representative</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
@@ -27,5 +25,11 @@
         <td>{{ product.quantity }}</td>
       </tr>
     </ng-template>
+    <!-- <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+      </ng-template> -->
   </p-table>
 </div>

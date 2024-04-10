@@ -17,7 +17,8 @@ import { SelectButtonModule } from "primeng/selectbutton";
 })
 export class TableSizeDemo {
   products!: Product[];
-  @Input() input_data!: string;
+  @Input() input_data_con!: string;
+  @Input() product_cha!: Product[];
 
   sizes!: any[];
   selectedSize: any = "";
@@ -33,35 +34,35 @@ export class TableSizeDemo {
         code: "f230fh0g3",
         name: "Bamboo Watch",
         category: "Product Description",
-        quantity: "bamboo-watch.jpg",
+        quantity: 1,
       },
       {
         id: "1001",
         code: "nvklal433",
         name: "Black Watch",
         category: "Product Description",
-        quantity: "black-watch.jpg",
+        quantity: 1,
       },
       {
         id: "1002",
         code: "zz21cz3c1",
         name: "Blue Band",
         category: "Product Description",
-        quantity: "blue-band.jpg",
+        quantity: 1,
       },
       {
         id: "1003",
         code: "244wgerg2",
         name: "Blue T-Shirt",
         category: "Product Description",
-        quantity: "blue-t-shirt.jpg",
+        quantity: 1,
       },
       {
         id: "1004",
         code: "h456wer53",
         name: "Bracelet",
         category: "Product Description",
-        quantity: "bracelet.jpg",
+        quantity: 1,
       },
     ];
 
