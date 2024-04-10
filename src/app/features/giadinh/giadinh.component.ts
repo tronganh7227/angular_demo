@@ -7,11 +7,14 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { User } from "../../core/auth/user.model";
+import { HeaderComponent } from "../../core/layout/header.component";
+import { TableSizeDemo } from "../../features/danhsach/danhsach.component";
 import { UserService } from "../../core/auth/services/user.service";
 import { ListErrorsComponent } from "../../shared/components/list-errors.component";
 import { Errors } from "../../core/models/errors.model";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-
+import { Product } from "../../features/danhsach/product";
+import { ProductService } from "../../features/danhsach/productservice";
 interface giadinhForm {
   image: FormControl<string>;
   username: FormControl<string>;
@@ -23,11 +26,17 @@ interface giadinhForm {
 @Component({
   selector: "app-giadinh-page",
   templateUrl: "./giadinh.component.html",
-  imports: [ListErrorsComponent, ReactiveFormsModule],
+  imports: [
+    ListErrorsComponent,
+    ReactiveFormsModule,
+    HeaderComponent,
+    TableSizeDemo,
+  ],
   standalone: true,
 })
 export default class giadinhComponent implements OnInit {
   user!: User;
+  tableSizeDemo!: TableSizeDemo;
   giadinhForm = new FormGroup<giadinhForm>({
     image: new FormControl("", { nonNullable: true }),
     username: new FormControl("", { nonNullable: true }),
@@ -46,12 +55,19 @@ export default class giadinhComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly userService: UserService,
+    private readonly productService: ProductService,
   ) {}
+  // gán dữ liệu cho compoment con
 
+  product_data!: Product[];
   ngOnInit(): void {
     this.giadinhForm.patchValue(
       this.userService.getCurrentUser() as Partial<User>,
     );
+    // gán dữ liệu cho danh sách con
+    this.productService.getProductsMini().then((data) => {
+      this.product_data = data;
+    });
   }
 
   logout(): void {

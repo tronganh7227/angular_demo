@@ -18,7 +18,7 @@
                 [routerLink]="['/settings']"
                 class="btn btn-sm btn-outline-secondary action-btn"
               >
-                <i class="ion-gear-a"></i> Edit Profile Settings
+                <i class="ion-gear-a"></i> Chỉnh sửa thông tin
               </a>
             }
           </div>
@@ -38,7 +38,7 @@
                   [routerLinkActiveOptions]="{ exact: true }"
                   [routerLink]="['/profile', profile.username]"
                 >
-                  My Posts
+                  Bài viết của tôi
                 </a>
               </li>
               <li class="nav-item">
@@ -48,12 +48,11 @@
                   [routerLinkActiveOptions]="{ exact: true }"
                   [routerLink]="['/profile', profile.username, 'favorites']"
                 >
-                  Favorited Posts
+                  Bài viết của mọi người
                 </a>
               </li>
             </ul>
           </div>
-
           <router-outlet></router-outlet>
         </div>
       </div>
